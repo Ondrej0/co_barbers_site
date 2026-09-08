@@ -19,6 +19,24 @@ const services = [
     },
 ];
 
+const barbers = [
+    {
+        name: "James Carter",
+        role: "Senior Barber",
+        image: "/barber-1.jpg",
+    },
+    {
+        name: "Lewis Grant",
+        role: "Fade Specialist",
+        image: "/barber-2.jpg",
+    },
+    {
+        name: "Daniel Reed",
+        role: "Barber",
+        image: "/barber-3.jpg",
+    },
+];
+
 export default function Home() {
   return (
     <>
@@ -59,9 +77,49 @@ export default function Home() {
                 </div>
             </div>
         </section>
-      <section>
-        <h2>service preview</h2>
-      </section>
+        <section className="bg-white py-20 text-neutral-950">
+            <div className="mx-auto max-w-7xl px-6">
+                <div className="max-w-2xl">
+                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">
+                        Our Services
+                    </p>
+
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight">
+                        Cuts and grooming, done properly.
+                    </h2>
+                </div>
+
+                <div className="mt-10 grid gap-6 md:grid-cols-3">
+                    {services.map((service) => (
+                        <div
+                            key={service.name}
+                            className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 shadow-sm"
+                        >
+                            <h3 className="text-xl font-semibold">
+                                {service.name}
+                            </h3>
+
+                            <p className="mt-6 text-3xl font-bold">
+                                £{service.price}
+                            </p>
+
+                            <p className="mt-2 text-sm text-neutral-500">
+                                {service.duration} mins
+                            </p>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-10">
+                    <Link
+                        href="/services"
+                        className="inline-block border-b border-neutral-950 pb-1 font-semibold"
+                    >
+                        View All Services
+                    </Link>
+                </div>
+            </div>
+        </section>
       <section>
         <h2>barbers preview</h2>
       </section>

@@ -1,4 +1,25 @@
+import {ServiceFilter} from "@/components/ServiceFilter";
+
+
 export default function ServicesPage() {
+    const services = [
+        {
+            name: "Classic Haircut",
+            price: 24,
+            duration: 30,
+        },
+        {
+            name: "Skin Fade",
+            price: 28,
+            duration: 45,
+        },
+        {
+            name: "Hair & Beard",
+            price: 35,
+            duration: 60,
+        },
+    ];
+
     return (
         <section className="bg-white py-20 text-neutral-950">
             <div className="mx-auto max-w-7xl px-6">
@@ -13,6 +34,9 @@ export default function ServicesPage() {
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
                     Explore our cuts, fades, beard trims, and grooming services.
                 </p>
+            </div>
+            <div>
+                <ServiceFilter services={services} />
             </div>
         </section>
     );

@@ -1,11 +1,64 @@
 import Link from 'next/link'
+import Image from 'next/image'
+
+const services = [
+    {
+        name: "Classic Haircut",
+        price: 24,
+        duration: 30,
+    },
+    {
+        name: "Skin Fade",
+        price: 28,
+        duration: 45,
+    },
+    {
+        name: "Hair & Beard",
+        price: 35,
+        duration: 60,
+    },
+];
 
 export default function Home() {
   return (
     <>
-      <section>
-        <h1>This is hero</h1>
-      </section>
+        <section className="relative overflow-hidden bg-neutral-950 text-white">
+            <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
+                <div>
+                    <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
+                        Gloucester Barbers
+                    </p>
+
+                    <h1 className="max-w-xl text-5xl font-bold leading-tight tracking-tight md:text-6xl">
+                        North & Co Barbers
+                    </h1>
+
+                    <p className="mt-6 max-w-lg text-lg leading-8 text-neutral-300">
+                        Sharp cuts, clean fades, and a relaxed barbershop experience.
+                    </p>
+
+                    <div className="mt-8">
+                        <Link
+                            href="/book"
+                            className="inline-block bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200"
+                        >
+                            Book Now
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="relative">
+                    <Image
+                        src="/barber-hero.jpg"
+                        alt="Barber cutting a customer's hair"
+                        width={1200}
+                        height={800}
+                        className="h-[420px] w-full rounded-2xl object-cover shadow-2xl md:h-[520px]"
+                        priority
+                    />
+                </div>
+            </div>
+        </section>
       <section>
         <h2>service preview</h2>
       </section>

@@ -164,10 +164,32 @@ export default function Home() {
                 </div>
             </div>
         </section>
-      <section>
-        <h2>Booking CTA</h2>
-        <Link href="/book">Book Now</Link>
-      </section>
+        <section className="bg-white py-20 text-neutral-950">
+            <div className="mx-auto max-w-7xl px-6">
+                <div className="rounded-3xl bg-neutral-100 px-8 py-14 text-center shadow-sm md:px-12 md:py-16">
+                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">
+                        Book Your Visit
+                    </p>
+
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+                        Ready for a fresh cut?
+                    </h2>
+
+                    <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-neutral-600">
+                        Book your appointment with North & Co today.
+                    </p>
+
+                    <div className="mt-8">
+                        <Link
+                            href="/book"
+                            className="inline-block rounded-xl bg-neutral-950 px-6 py-3 font-semibold text-white transition hover:bg-neutral-800"
+                        >
+                            Book Now
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </section>
     </>
   );
 }

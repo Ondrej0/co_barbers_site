@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import {barbers} from "@/data/barbers";
 
 const services = [
     {
@@ -16,24 +17,6 @@ const services = [
         name: "Hair & Beard",
         price: 35,
         duration: 60,
-    },
-];
-
-const barbers = [
-    {
-        name: "James Carter",
-        role: "Senior Barber",
-        image: "/barber-1.jpg",
-    },
-    {
-        name: "Lewis Grant",
-        role: "Fade Specialist",
-        image: "/barber-2.jpg",
-    },
-    {
-        name: "Daniel Reed",
-        role: "Barber",
-        image: "/barber-3.jpg",
     },
 ];
 

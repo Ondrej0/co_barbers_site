@@ -1,7 +1,7 @@
-import {BarberCard} from "@/components/BarberCard";
-import {barbers} from "@/data/barbers";
+import { BarberCard } from "@/components/BarberCard";
+import { barbers } from "@/data/barbers";
 
-export default function Barbers(){
+export default function Barbers() {
     return (
         <>
             <section className="bg-white py-20 text-neutral-950">
@@ -10,20 +10,31 @@ export default function Barbers(){
                         North & Co
                     </p>
 
-                    <h1 className="mt-3 text-5xl font-bold tracking-tight">
+                    <h1 className="mt-3 text-5xl font-bold tracking-tight md:text-6xl">
                         Meet the Barbers
                     </h1>
 
                     <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
-                        Get to know your team
+                        Meet the people behind the chair. Experienced barbers,
+                        sharp attention to detail, and a style for every client.
                     </p>
                 </div>
             </section>
-            <section className="bg-white py-20 text-neutral-950">
-                {barbers.map((barber) => (
-                    <BarberCard key={barber.id} name={barber.name} id={barber.id} experience={barber.experience} role={barber.role} />
-                ))}
+
+            <section className="bg-white pb-24 text-neutral-950">
+                <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-2 lg:grid-cols-3">
+                    {barbers.map((barber) => (
+                        <BarberCard
+                            key={barber.id}
+                            id={barber.id}
+                            name={barber.name}
+                            role={barber.role}
+                            experience={barber.experience}
+                            image={barber.image}
+                        />
+                    ))}
+                </div>
             </section>
         </>
-    )
+    );
 }

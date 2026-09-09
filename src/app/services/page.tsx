@@ -1,24 +1,20 @@
 import {ServiceFilter} from "@/components/ServiceFilter";
+import {createClient} from "@/utils/supabase/server";
 
 
-export default function ServicesPage() {
-    const services = [
-        {
-            name: "Classic Haircut",
-            price: 24,
-            duration: 30,
-        },
-        {
-            name: "Skin Fade",
-            price: 28,
-            duration: 45,
-        },
-        {
-            name: "Hair & Beard",
-            price: 35,
-            duration: 60,
-        },
-    ];
+export default async function ServicesPage() {
+
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from("services")
+        .select("*");
+
+    if (error) {
+        throw new Error("Failed to load services");
+    }
+
+    const services = data ?? [];
 
     return (
         <section className="bg-white py-20 text-neutral-950">

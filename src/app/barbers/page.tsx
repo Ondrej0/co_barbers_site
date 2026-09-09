@@ -1,7 +1,18 @@
 import { BarberCard } from "@/components/BarberCard";
-import { barbers } from "@/data/barbers";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Barbers() {
+export default async function Barbers() {
+    const supabase = await createClient();
+
+    const { data: barbers, error } = await supabase
+        .from("barbers")
+        .select("*");
+
+    if (error) {
+        console.error("Supabase error:", error);
+        throw new Error(error.message);
+    }
+
     return (
         <>
             <section className="bg-white py-20 text-neutral-950">
@@ -26,11 +37,11 @@ export default function Barbers() {
                     {barbers.map((barber) => (
                         <BarberCard
                             key={barber.id}
-                            id={barber.id}
+                            slug={barber.slug}
                             name={barber.name}
                             role={barber.role}
-                            experience={barber.experience}
-                            image={barber.image}
+                            experienceYears={barber.experience_years}
+                            imageUrl={barber.image_url}
                         />
                     ))}
                 </div>

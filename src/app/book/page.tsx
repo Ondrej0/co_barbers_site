@@ -1,3 +1,5 @@
+import {BookingSteps} from "@/components/BookingSteps";
+
 export default function BookPage(){
     return (
         <section className="bg-white py-20 text-neutral-950">
@@ -14,6 +16,7 @@ export default function BookPage(){
                    Use our internal software to book
                 </p>
             </div>
+            <BookingSteps />
         </section>
     )
 }

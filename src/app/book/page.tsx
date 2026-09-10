@@ -1,6 +1,27 @@
 import {BookingSteps} from "@/components/BookingSteps";
+import {createClient} from "@/utils/supabase/server";
 
-export default function BookPage(){
+export default async function BookPage(){
+
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from("availability")
+        .select(`
+        day_of_week,
+        start_time,
+        end_time,
+        barbers (
+            name
+        )
+    `);
+
+    if (error) {
+        throw new Error(`Error: ${error.message}`);
+    }
+
+    console.log("This is data:", data);
+
     return (
         <section className="bg-white py-20 text-neutral-950">
             <div className="mx-auto max-w-7xl px-6">

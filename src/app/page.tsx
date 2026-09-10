@@ -1,188 +1,147 @@
 import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/server";
+import { ServiceCard } from "@/components/ServiceCard";
+import { BarberCard } from "@/components/BarberCard";
+import { BookingCTA } from "@/components/BookingCTA";
+import { Reveal } from "@/components/Reveal";
 
 export default async function Home() {
-    const supabase = await createClient();
+  const supabase = await createClient();
+  const [
+    { data: services, error: servicesError },
+    { data: barbers, error: barbersError },
+  ] = await Promise.all([
+    supabase.from("services").select("*"),
+    supabase.from("barbers").select("*"),
+  ]);
+  if (servicesError || barbersError) {
+    throw new Error("There has been an error");
+  }
 
-    const [
-        { data: services, error: servicesError },
-        { data: barbers, error: barbersError },
-    ] = await Promise.all([
-        supabase.from("services").select("*"),
-        supabase.from("barbers").select("*"),
-    ]);
-
-    if (servicesError || barbersError) {
-        throw new Error("There has been an error");
-    }
-
-    return (
-        <>
-            <section className="relative overflow-hidden bg-neutral-950 text-white">
-                <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
-                    <div>
-                        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
-                            Gloucester Barbers
-                        </p>
-
-                        <h1 className="max-w-xl text-5xl font-bold leading-tight tracking-tight md:text-6xl">
-                            North & Co Barbers
-                        </h1>
-
-                        <p className="mt-6 max-w-lg text-lg leading-8 text-neutral-300">
-                            Sharp cuts, clean fades, and a relaxed barbershop experience.
-                        </p>
-
-                        <div className="mt-8">
-                            <Link
-                                href="/book"
-                                className="inline-block bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200"
-                            >
-                                Book Now
-                            </Link>
-                        </div>
-                    </div>
-
-                    <div className="relative">
-                        <Image
-                            src="/barber-hero.jpg"
-                            alt="Barber cutting a customer's hair"
-                            width={1200}
-                            height={800}
-                            className="h-[420px] w-full rounded-2xl object-cover shadow-2xl md:h-[520px]"
-                            priority
-                        />
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-white py-20 text-neutral-950">
-                <div className="mx-auto max-w-7xl px-6">
-                    <div className="max-w-2xl">
-                        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">
-                            Our Services
-                        </p>
-
-                        <h2 className="mt-3 text-4xl font-bold tracking-tight">
-                            Cuts and grooming, done properly.
-                        </h2>
-                    </div>
-
-                    <div className="mt-10 grid gap-6 md:grid-cols-3">
-                        {services.map((service) => {
-                            const price = (service.price_pence / 100).toLocaleString("en-GB", {
-                                style: "currency",
-                                currency: "GBP",
-                            });
-
-                            return (
-                                <div
-                                    key={service.id}
-                                    className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 shadow-sm"
-                                >
-                                    <h3 className="text-xl font-semibold">
-                                        {service.name}
-                                    </h3>
-
-                                    <p className="mt-2 text-sm leading-6 text-neutral-600">
-                                        {service.description}
-                                    </p>
-
-                                    <p className="mt-6 text-3xl font-bold">
-                                        {price}
-                                    </p>
-
-                                    <p className="mt-2 text-sm text-neutral-500">
-                                        {service.duration_mins} mins
-                                    </p>
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    <div className="mt-10">
-                        <Link
-                            href="/services"
-                            className="inline-block border-b border-neutral-950 pb-1 font-semibold"
-                        >
-                            View All Services
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-neutral-950 py-20 text-white">
-                <div className="mx-auto max-w-7xl px-6">
-                    <div className="max-w-2xl">
-                        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
-                            Meet the Team
-                        </p>
-
-                        <h2 className="mt-3 text-4xl font-bold tracking-tight">
-                            Experienced barbers. No rushed cuts.
-                        </h2>
-                    </div>
-
-                    <div className="mt-10 grid gap-6 md:grid-cols-3">
-                        {barbers.map((barber) => (
-                            <div key={barber.id}>
-                                <Image
-                                    src={barber.image_url}
-                                    alt={`${barber.name}, ${barber.role}`}
-                                    width={600}
-                                    height={800}
-                                    className="h-[420px] w-full rounded-2xl object-cover shadow-xl"
-                                />
-
-                                <h3 className="mt-5 text-xl font-semibold">
-                                    {barber.name}
-                                </h3>
-
-                                <p className="mt-1 text-sm text-neutral-400">
-                                    {barber.role}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-10">
-                        <Link
-                            href="/barbers"
-                            className="inline-block border-b border-white pb-1 font-semibold"
-                        >
-                            Meet All Barbers
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-white py-20 text-neutral-950">
-                <div className="mx-auto max-w-7xl px-6">
-                    <div className="rounded-3xl bg-neutral-100 px-8 py-14 text-center shadow-sm md:px-12 md:py-16">
-                        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">
-                            Book Your Visit
-                        </p>
-
-                        <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-                            Ready for a fresh cut?
-                        </h2>
-
-                        <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-neutral-600">
-                            Book your appointment with North & Co today.
-                        </p>
-
-                        <div className="mt-8">
-                            <Link
-                                href="/book"
-                                className="inline-block rounded-xl bg-neutral-950 px-6 py-3 font-semibold text-white transition hover:bg-neutral-800"
-                            >
-                                Book Now
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+  return (
+    <>
+      <section className="overflow-hidden bg-ink text-white">
+        <div className="site-container grid items-center gap-10 py-10 md:grid-cols-2 md:gap-12 md:py-16 lg:gap-20">
+          <div className="hero-enter py-4 md:py-10">
+            <p className="eyebrow text-brass">
+              Gloucester · North & Co. Barbers
+            </p>
+            <h1 className="display-title mt-7 text-[3.6rem] sm:text-7xl md:text-[3.5rem] lg:text-[4.5rem] xl:text-[5.6rem]">
+              Modern cuts.
+              <br />
+              <span className="italic text-brass">Traditional</span>
+              <br />
+              standards.
+            </h1>
+            <p className="mt-7 max-w-md text-base leading-7 text-neutral-300 md:text-lg md:leading-8">
+              Sharp cuts, clean fades, and a relaxed barbershop experience. A
+              little time in the chair. A fresh start to your day.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/book" className="btn btn-brass">
+                Book your visit <span aria-hidden="true">↗</span>
+              </Link>
+              <Link href="/services" className="btn btn-light">
+                Explore services
+              </Link>
+            </div>
+            <div className="mt-10 flex items-center gap-4 border-t border-white/15 pt-6 text-xs uppercase tracking-[0.15em] text-neutral-400">
+              <span className="h-px w-8 bg-brass" aria-hidden="true" />
+              Cuts · Fades · Grooming
+            </div>
+          </div>
+          <div className="group relative">
+            <div className="image-frame aspect-[4/5] max-h-[650px] rounded-t-[7rem] rounded-b-lg md:rounded-t-[10rem]">
+              <Image
+                src="/barber-hero.jpg"
+                alt="A precise scissor cut at the barber's chair"
+                fill
+                sizes="(max-width: 767px) 100vw, 50vw"
+                className="image-zoom object-[center_45%]"
+                preload
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+                aria-hidden="true"
+              />
+              <p className="absolute inset-x-6 bottom-7 border-t border-white/30 pt-4 text-sm tracking-wide text-white">
+                Good hair. Good company.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section-space">
+        <div className="site-container">
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-xl">
+              <p className="eyebrow text-[#795b37]">01 / The service menu</p>
+              <h2 className="section-title mt-4">
+                Cuts and grooming,
+                <br />
+                done properly.
+              </h2>
+            </div>
+            <Link href="/services" className="text-link">
+              All services <span aria-hidden="true">↗</span>
+            </Link>
+          </Reveal>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => (
+              <Reveal key={service.id} delay={(index % 3) * 70}>
+                <ServiceCard
+                  name={service.name}
+                  description={service.description}
+                  price_pence={service.price_pence}
+                  duration_mins={service.duration_mins}
+                />
+              </Reveal>
+            ))}
+          </div>
+          {services.length === 0 && (
+            <p className="notice mt-8">
+              Our service menu is being updated. Please check back soon.
+            </p>
+          )}
+        </div>
+      </section>
+      <section className="section-space border-y border-ink/10 bg-[#eaece5]">
+        <div className="site-container">
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-xl">
+              <p className="eyebrow text-[#795b37]">02 / Behind the chair</p>
+              <h2 className="section-title mt-4">
+                Experienced hands.
+                <br />
+                Individual style.
+              </h2>
+            </div>
+            <Link href="/barbers" className="text-link">
+              Meet the team <span aria-hidden="true">↗</span>
+            </Link>
+          </Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {barbers.map((barber, index) => (
+              <Reveal key={barber.id} delay={(index % 3) * 90}>
+                <BarberCard
+                  slug={barber.slug}
+                  name={barber.name}
+                  role={barber.role}
+                  experienceYears={barber.experience_years}
+                  imageUrl={barber.image_url}
+                />
+              </Reveal>
+            ))}
+          </div>
+          {barbers.length === 0 && (
+            <p className="notice mt-8">
+              Our team profiles are being updated. Please check back soon.
+            </p>
+          )}
+        </div>
+      </section>
+      <BookingCTA />
+    </>
+  );
 }

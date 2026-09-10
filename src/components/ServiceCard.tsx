@@ -1,45 +1,44 @@
+import Link from "next/link";
+
 interface ServiceCardProps {
-    name: string;
-    price_pence: number;
-    duration_mins: number;
-    description: string;
+  name: string;
+  price_pence: number;
+  duration_mins: number;
+  description: string;
 }
 
 export function ServiceCard({
-                                name,
-                                price_pence,
-                                duration_mins,
-                                description,
-                            }: ServiceCardProps) {
+  name,
+  price_pence,
+  duration_mins,
+  description,
+}: ServiceCardProps) {
+  const price = (price_pence / 100).toLocaleString("en-GB", {
+    style: "currency",
+    currency: "GBP",
+  });
 
-    const price = (price_pence / 100).toLocaleString("en-GB", {
-        style: "currency",
-        currency: "GBP",
-    });
-
-    return (
-        <article className="flex h-full flex-col rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-            <div className="flex items-start justify-between gap-6">
-                <div>
-                    <h2 className="text-xl font-semibold tracking-tight text-neutral-950">
-                        {name}
-                    </h2>
-
-                    <p className="mt-2 text-sm leading-6 text-neutral-600">
-                        {description}
-                    </p>
-                </div>
-
-                <p className="shrink-0 text-xl font-bold text-neutral-950">
-                    {price}
-                </p>
-            </div>
-
-            <div className="mt-auto pt-6">
-                <span className="inline-flex rounded-full bg-neutral-100 px-3 py-1 text-sm font-medium text-neutral-600">
-                    {duration_mins} mins
-                </span>
-            </div>
-        </article>
-    );
+  return (
+    <article className="surface-card group flex h-full flex-col p-6 sm:p-7">
+      <div className="mb-7 flex items-center justify-between gap-4 border-b border-ink/10 pb-5">
+        <span className="text-sm text-neutral-500">
+          {duration_mins} minutes
+        </span>
+        <span className="font-serif text-3xl tracking-tight text-ink">
+          {price}
+        </span>
+      </div>
+      <h2 className="text-xl font-semibold tracking-tight text-ink">{name}</h2>
+      <p className="mt-3 text-base leading-7 text-neutral-600">{description}</p>
+      <div className="mt-auto pt-7">
+        <Link
+          href="/book"
+          aria-label={`Book an appointment — ${name}`}
+          className="text-link text-ink"
+        >
+          Book an appointment <span aria-hidden="true">↗</span>
+        </Link>
+      </div>
+    </article>
+  );
 }

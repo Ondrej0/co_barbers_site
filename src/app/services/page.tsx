@@ -1,39 +1,26 @@
-import {ServiceFilter} from "@/components/ServiceFilter";
-import {createClient} from "@/utils/supabase/server";
+import type { Metadata } from "next";
+import { ServiceFilter } from "@/components/ServiceFilter";
+import { createClient } from "@/utils/supabase/server";
+import { PageHeader } from "@/components/PageHeader";
 
+export const metadata: Metadata = { title: "Services" };
 
 export default async function ServicesPage() {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("services").select("*");
+  if (error) {
+    throw new Error("Failed to load services");
+  }
+  const services = data ?? [];
 
-    const supabase = await createClient();
-
-    const { data, error } = await supabase
-        .from("services")
-        .select("*");
-
-    if (error) {
-        throw new Error("Failed to load services");
-    }
-
-    const services = data ?? [];
-
-    return (
-        <section className="bg-white py-20 text-neutral-950">
-            <div className="mx-auto max-w-7xl px-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">
-                    North & Co
-                </p>
-
-                <h1 className="mt-3 text-5xl font-bold tracking-tight">
-                    Services
-                </h1>
-
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
-                    Explore our cuts, fades, beard trims, and grooming services.
-                </p>
-            </div>
-            <div>
-                <ServiceFilter services={services} />
-            </div>
-        </section>
-    );
+  return (
+    <>
+      <PageHeader
+        eyebrow="The service menu"
+        title="Look sharp. Feel good."
+        description="From a fresh fade to a beard tidy. Explore our cuts and grooming services, with time set aside to get the details right."
+      />
+      <ServiceFilter services={services} />
+    </>
+  );
 }

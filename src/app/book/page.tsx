@@ -5,18 +5,15 @@ export default async function BookPage(){
 
     const supabase = await createClient();
 
-    const { data: availability, error: availabilityError } = await supabase
-        .from("availability")
-        .select("*");
-
-    const { data: services, error: servicesError } = await supabase
-        .from("services")
-        .select("*");
-
-    const { data: barbers, error: barbersError } = await supabase
-        .from("barbers")
-        .select("*")
-        .order("name");
+    const [
+        { data: availability, error: availabilityError },
+        { data: services, error: servicesError },
+        { data: barbers, error: barbersError },
+    ] = await Promise.all([
+        supabase.from("availability").select("*"),
+        supabase.from("services").select("*"),
+        supabase.from("barbers").select("*").order("name"),
+    ]);
 
     if (availabilityError) {
         throw new Error(`Error: ${availabilityError.message}`);

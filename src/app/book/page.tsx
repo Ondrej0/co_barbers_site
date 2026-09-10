@@ -5,22 +5,30 @@ export default async function BookPage(){
 
     const supabase = await createClient();
 
-    const { data, error } = await supabase
+    const { data: availability, error: availabilityError } = await supabase
         .from("availability")
-        .select(`
-        day_of_week,
-        start_time,
-        end_time,
-        barbers (
-            name
-        )
-    `);
+        .select("*");
 
-    if (error) {
-        throw new Error(`Error: ${error.message}`);
+    const { data: services, error: servicesError } = await supabase
+        .from("services")
+        .select("*");
+
+    const { data: barbers, error: barbersError } = await supabase
+        .from("barbers")
+        .select("*")
+        .order("name");
+
+    if (availabilityError) {
+        throw new Error(`Error: ${availabilityError.message}`);
     }
 
-    console.log("This is data:", data);
+    if (servicesError) {
+        throw new Error(`Error: ${servicesError.message}`);
+    }
+
+    if (barbersError) {
+        throw new Error(`Error: ${barbersError.message}`);
+    }
 
     return (
         <section className="bg-white py-20 text-neutral-950">
@@ -37,7 +45,11 @@ export default async function BookPage(){
                    Use our internal software to book
                 </p>
             </div>
-            <BookingSteps />
+            <BookingSteps
+                services={services ?? []}
+                barbers={barbers ?? []}
+                availability={availability ?? []}
+            />
         </section>
     )
 }

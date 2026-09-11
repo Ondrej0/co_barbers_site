@@ -28,26 +28,43 @@ export default function LoginForm() {
     }
 
     return (
-        <>
-            <label htmlFor="email">Email: </label>
-            <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
+        <div className="space-y-6">
+            <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-ink">
+                    Email address
+                </label>
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="username"
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    placeholder="you@example.com"
+                    className="field"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
 
-            <label htmlFor="password">Password: </label>
-            <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+            <div>
+                <label htmlFor="password" className="block text-sm font-semibold text-ink">
+                    Password
+                </label>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    className="field"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
 
-            <button onClick={handleLogin}>
-                Login
+            <button type="button" onClick={handleLogin} className="btn btn-primary w-full">
+                Log in <span aria-hidden="true">↗</span>
             </button>
-        </>
+        </div>
     );
 }

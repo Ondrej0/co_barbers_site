@@ -14,8 +14,8 @@ export default function LogoutButton() {
     };
 
     return (
-        <button onClick={handleLogout}>
-            Logout
+        <button type="button" onClick={handleLogout} className="btn btn-secondary w-full shrink-0 sm:w-auto">
+            Log out <span aria-hidden="true">↗</span>
         </button>
     );
 }

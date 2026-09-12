@@ -3,7 +3,11 @@ import { ServiceFilter } from "@/components/ServiceFilter";
 import { createClient } from "@/utils/supabase/server";
 import { PageHeader } from "@/components/PageHeader";
 
-export const metadata: Metadata = { title: "Services" };
+export const metadata: Metadata = {
+    title: "Haircut Services",
+    description:
+        "Explore our professional barber services in Gloucester, with quality haircuts, skin fades and beard trims at affordable prices.",
+};
 
 export default async function ServicesPage() {
   const supabase = await createClient();

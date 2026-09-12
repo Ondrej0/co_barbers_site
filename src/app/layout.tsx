@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: "North & Co. | Gloucester Barbers",
-    template: "%s | North & Co.",
+    template: "%s | North & Co. | Gloucester Barbers",
   },
   description:
     "Sharp cuts, clean fades and a relaxed barbershop experience in Gloucester. Explore our services, meet the barbers and book your next visit to North & Co.",

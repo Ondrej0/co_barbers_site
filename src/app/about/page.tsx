@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
       "Learn more about North & Co., a Gloucester barbershop combining modern cuts with traditional standards and a relaxed, welcoming experience.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function About() {

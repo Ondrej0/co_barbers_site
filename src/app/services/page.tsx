@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     title: "Men's haircuts & barber services",
     description:
         "Explore our professional barber services in Gloucester for men, with quality haircuts, skin fades and beard trims at affordable prices.",
+
+    alternates: {
+        canonical: "/services",
+    },
 };
 
 export default async function ServicesPage() {

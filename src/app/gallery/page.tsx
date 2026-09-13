@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Haircut Gallery",
   description:
       "Explore the North & Co. haircut gallery, featuring skin fades, scissor cuts, beard grooming and the craft behind our Gloucester barbershop.",
+  alternates: {
+    canonical: "/gallery",
+  },
 };
 const photos = [
   {

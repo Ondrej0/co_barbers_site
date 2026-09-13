@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Book a Barber Appointment",
   description:
       "Book your next haircut at North & Co. in Gloucester. Choose your barber, service, date and time online in just a few simple steps.",
+  alternates: {
+    canonical: "/book",
+  },
 };
 
 export default async function BookPage() {

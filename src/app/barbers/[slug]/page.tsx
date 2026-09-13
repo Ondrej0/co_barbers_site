@@ -41,6 +41,9 @@ export async function generateMetadata({
   return {
     title: `${barber.name} | ${barber.role}`,
     description: `Meet ${barber.name}, ${barber.role} at North & Co. in Gloucester. Learn more about their experience and book your next appointment.`,
+    alternates: {
+      canonical: `/barbers/${slug}`,
+    },
   };
 }
 

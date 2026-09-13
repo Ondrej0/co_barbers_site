@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
       "Contact North & Co. Barbers in Gloucester, explore our services and prices, meet the team, or book your next barber appointment online.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

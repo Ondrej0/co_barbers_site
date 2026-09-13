@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     title: "Our Barbers",
     description:
         "Meet the experienced barbers at North & Co. in Gloucester. Explore each barber's style, experience and profile before booking your next cut.",
+    alternates: {
+        canonical: "/barbers",
+    },
 };
 
 export default async function Barbers() {

@@ -1,4 +1,13 @@
 import LoginForm from "@/components/LoginForm";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "Staff Sign In",
+    robots: {
+        index: false,
+        follow: false,
+    },
+};
 
 export default function LoginPage() {
     return (

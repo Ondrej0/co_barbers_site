@@ -4,7 +4,11 @@ import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+      "Contact North & Co. Barbers in Gloucester, explore our services and prices, meet the team, or book your next barber appointment online.",
+};
 
 export default function ContactPage() {
   return (
@@ -18,8 +22,10 @@ export default function ContactPage() {
         <div className="site-container grid gap-8 lg:grid-cols-2 lg:gap-14">
           <Reveal className="flex flex-col gap-6">
             <div className="rounded-xl border border-white/10 bg-ink p-7 text-white sm:p-10">
-              <p className="eyebrow text-brass">Appointments</p>
-              <h2 className="section-title mt-5">Your chair is waiting.</h2>
+              <h2 className="eyebrow text-brass">Appointments</h2>
+              <p className="section-title mt-5">
+                Your chair is waiting.
+              </p>
               <p className="mt-5 max-w-md text-base leading-7 text-neutral-300">
                 Choose your service and barber, then see available dates and
                 times in our online booking.

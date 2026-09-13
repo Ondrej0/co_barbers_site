@@ -5,7 +5,11 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { BookingCTA } from "@/components/BookingCTA";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+      "Learn more about North & Co., a Gloucester barbershop combining modern cuts with traditional standards and a relaxed, welcoming experience.",
+};
 
 export default function About() {
   return (

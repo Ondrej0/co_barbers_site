@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { BookingSteps } from "@/components/BookingSteps";
 import { createClient } from "@/utils/supabase/server";
 
-export const metadata: Metadata = { title: "Book an Appointment" };
+export const metadata: Metadata = {
+  title: "Book a Barber Appointment",
+  description:
+      "Book your next haircut at North & Co. in Gloucester. Choose your barber, service, date and time online in just a few simple steps.",
+};
 
 export default async function BookPage() {
   const supabase = await createClient();

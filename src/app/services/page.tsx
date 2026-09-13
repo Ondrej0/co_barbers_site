@@ -4,9 +4,9 @@ import { createClient } from "@/utils/supabase/server";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-    title: "Haircut Services",
+    title: "Men's haircuts & barber services",
     description:
-        "Explore our professional barber services in Gloucester, with quality haircuts, skin fades and beard trims at affordable prices.",
+        "Explore our professional barber services in Gloucester for men, with quality haircuts, skin fades and beard trims at affordable prices.",
 };
 
 export default async function ServicesPage() {

@@ -4,7 +4,11 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { BookingCTA } from "@/components/BookingCTA";
 
-export const metadata: Metadata = { title: "Gallery" };
+export const metadata: Metadata = {
+  title: "Haircut Gallery",
+  description:
+      "Explore the North & Co. haircut gallery, featuring skin fades, scissor cuts, beard grooming and the craft behind our Gloucester barbershop.",
+};
 const photos = [
   {
     src: "/barber-hero.jpg",
@@ -37,7 +41,7 @@ export default function GalleryPage() {
     <>
       <PageHeader
         eyebrow="A closer look"
-        title="The craft, in focus."
+        title="Our haircut gallery."
         description="Cuts, fades and the details in between. Take a look at life behind the chair."
       />
       <section className="pt-12 md:pt-20">

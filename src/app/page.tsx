@@ -5,6 +5,13 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { BarberCard } from "@/components/BarberCard";
 import { BookingCTA } from "@/components/BookingCTA";
 import { Reveal } from "@/components/Reveal";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+  title: "Barbers in Gloucester",
+  description:
+      "Professional barbers in Gloucester offering quality men's haircuts, skin fades and beard trims. Explore our services, meet our barbers and book your next visit.",
+};
 
 export default async function Home() {
   const supabase = await createClient();
@@ -24,16 +31,17 @@ export default async function Home() {
       <section className="overflow-hidden bg-ink text-white">
         <div className="site-container grid items-center gap-10 py-10 md:grid-cols-2 md:gap-12 md:py-16 lg:gap-20">
           <div className="hero-enter py-4 md:py-10">
-            <p className="eyebrow text-brass">
+            <h1 className="eyebrow text-brass">
               Gloucester · North & Co. Barbers
-            </p>
-            <h1 className="display-title mt-7 text-[3.6rem] sm:text-7xl md:text-[3.5rem] lg:text-[4.5rem] xl:text-[5.6rem]">
+            </h1>
+
+            <p className="display-title mt-7 text-[3.6rem] sm:text-7xl md:text-[3.5rem] lg:text-[4.5rem] xl:text-[5.6rem]">
               Modern cuts.
               <br />
               <span className="italic text-brass">Traditional</span>
               <br />
               standards.
-            </h1>
+            </p>
             <p className="mt-7 max-w-md text-base leading-7 text-neutral-300 md:text-lg md:leading-8">
               Sharp cuts, clean fades, and a relaxed barbershop experience. A
               little time in the chair. A fresh start to your day.
@@ -76,12 +84,14 @@ export default async function Home() {
         <div className="site-container">
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-xl">
-              <p className="eyebrow text-[#795b37]">01 / The service menu</p>
-              <h2 className="section-title mt-4">
+              <h2 className="eyebrow text-[#795b37]">
+                01 / Barber services in Gloucester
+              </h2>
+              <p className="section-title mt-4">
                 Cuts and grooming,
                 <br />
                 done properly.
-              </h2>
+              </p>
             </div>
             <Link href="/services" className="text-link">
               All services <span aria-hidden="true">↗</span>
@@ -110,12 +120,14 @@ export default async function Home() {
         <div className="site-container">
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-xl">
-              <p className="eyebrow text-[#795b37]">02 / Behind the chair</p>
-              <h2 className="section-title mt-4">
+              <h2 className="eyebrow text-[#795b37]">
+                02 / Behind the chair · Our barbers
+              </h2>
+              <p className="section-title mt-4">
                 Experienced hands.
                 <br />
                 Individual style.
-              </h2>
+              </p>
             </div>
             <Link href="/barbers" className="text-link">
               Meet the team <span aria-hidden="true">↗</span>

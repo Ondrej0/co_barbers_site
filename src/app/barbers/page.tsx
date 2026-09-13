@@ -4,7 +4,11 @@ import { createClient } from "@/utils/supabase/server";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 
-export const metadata: Metadata = { title: "Our Barbers" };
+export const metadata: Metadata = {
+    title: "Our Barbers",
+    description:
+        "Meet the experienced barbers at North & Co. in Gloucester. Explore each barber's style, experience and profile before booking your next cut.",
+};
 
 export default async function Barbers() {
   const supabase = await createClient();

@@ -29,8 +29,28 @@ export default async function Home() {
     throw new Error("There has been an error");
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Barbershop",
+    name: "North & Co. Barbers",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    description:
+        "A Gloucester barbershop offering men's haircuts, skin fades and beard grooming.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Gloucester",
+      addressCountry: "GB",
+    },
+  };
+
   return (
     <>
+      <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
+      />
       <section className="overflow-hidden bg-ink text-white">
         <div className="site-container grid items-center gap-10 py-10 md:grid-cols-2 md:gap-12 md:py-16 lg:gap-20">
           <div className="hero-enter py-4 md:py-10">

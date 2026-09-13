@@ -11,6 +11,13 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "/services",
     },
+    openGraph: {
+        title: "Men's Haircuts & Barber Services",
+        description:
+            "Explore men's haircuts, skin fades and beard grooming at North & Co. Barbers in Gloucester.",
+        url: "/services",
+        images: ["/opengraph-image.png"],
+    },
 };
 
 export default async function ServicesPage() {

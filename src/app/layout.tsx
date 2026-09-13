@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   },
   description:
     "Sharp cuts, clean fades and a relaxed barbershop experience in Gloucester. Explore our services, meet the barbers and book your next visit to North & Co.",
+  openGraph: {
+    siteName: "North & Co. Barbers",
+    type: "website",
+    locale: "en_GB",
+    title: "North & Co. | Gloucester Barbers",
+    description:
+        "Sharp cuts, clean fades and a relaxed barbershop experience in Gloucester.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

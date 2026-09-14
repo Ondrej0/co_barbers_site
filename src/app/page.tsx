@@ -74,7 +74,7 @@ export default async function Home() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link href="/book" className="btn btn-brass">
-                  Book your visit <span aria-hidden="true">↗</span>
+                  Book your visit <span aria-hidden="true">↗︎</span>
                 </Link>
 
                 <Link href="/services" className="btn btn-light">
@@ -128,7 +128,7 @@ export default async function Home() {
               </div>
 
               <Link href="/services" className="text-link">
-                All services <span aria-hidden="true">↗</span>
+                All services <span aria-hidden="true">↗︎</span>
               </Link>
             </Reveal>
 
@@ -169,7 +169,7 @@ export default async function Home() {
               </div>
 
               <Link href="/barbers" className="text-link">
-                Meet the team <span aria-hidden="true">↗</span>
+                Meet the team <span aria-hidden="true">↗︎</span>
               </Link>
             </Reveal>
 

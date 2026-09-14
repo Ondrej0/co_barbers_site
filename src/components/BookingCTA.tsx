@@ -18,7 +18,7 @@ export function BookingCTA() {
             </p>
           </div>
           <Link href="/book" className="btn btn-brass mt-8 shrink-0 md:mt-0">
-            Book an appointment <span aria-hidden="true">↗</span>
+            Book an appointment <span aria-hidden="true">↗︎</span>
           </Link>
         </Reveal>
       </div>

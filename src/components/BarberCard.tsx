@@ -49,7 +49,7 @@ export function BarberCard({
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink/20 text-ink transition group-hover:border-brass group-hover:bg-brass"
               aria-hidden="true"
             >
-              ↗
+              ↗︎
             </span>
           </div>
           <p className="mt-3 text-sm text-neutral-500">Meet your barber</p>

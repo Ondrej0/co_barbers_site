@@ -36,7 +36,7 @@ export function ServiceCard({
           aria-label={`Book an appointment — ${name}`}
           className="text-link text-ink"
         >
-          Book an appointment <span aria-hidden="true">↗</span>
+          Book an appointment <span aria-hidden="true">↗︎</span>
         </Link>
       </div>
     </article>

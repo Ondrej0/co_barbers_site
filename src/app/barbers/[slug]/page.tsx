@@ -52,7 +52,7 @@ export default async function BarberProfilePage({
   return (
       <section className="site-container py-8 md:py-12 lg:pb-24">
         <Link href="/barbers" className="text-link mb-8 text-neutral-600">
-          <span aria-hidden="true">←</span> All barbers
+          <span aria-hidden="true">←︎</span> All barbers
         </Link>
 
         <div className="grid gap-10 md:grid-cols-2 lg:items-center lg:gap-20">
@@ -103,7 +103,7 @@ export default async function BarberProfilePage({
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/book" className="btn btn-primary">
-                Book a visit <span aria-hidden="true">↗</span>
+                Book a visit <span aria-hidden="true">↗︎</span>
               </Link>
 
               <Link href="/barbers" className="btn btn-secondary">

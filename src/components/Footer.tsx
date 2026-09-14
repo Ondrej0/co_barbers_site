@@ -43,7 +43,7 @@ export function Footer() {
               A little time for yourself
             </p>
             <Link href="/book" className="btn btn-light w-full sm:w-auto">
-              Book your visit <span aria-hidden="true">↗</span>
+              Book your visit <span aria-hidden="true">↗︎</span>
             </Link>
           </div>
         </div>

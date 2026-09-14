@@ -52,7 +52,7 @@ export default function About() {
               and make a little time for yourself.
             </p>
             <Link href="/barbers" className="text-link mt-6">
-              Meet your barber <span aria-hidden="true">↗</span>
+              Meet your barber <span aria-hidden="true">↗︎</span>
             </Link>
           </Reveal>
         </div>

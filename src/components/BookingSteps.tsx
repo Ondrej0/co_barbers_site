@@ -384,7 +384,7 @@ export function BookingSteps({
               onClick={() => setStep(2)}
               className="btn btn-primary w-full sm:w-auto"
             >
-              Choose a barber <span aria-hidden="true">→</span>
+              Choose a barber <span aria-hidden="true">→︎</span>
             </button>
           </div>
         </div>
@@ -454,7 +454,7 @@ export function BookingSteps({
               onClick={() => setStep(3)}
               className="btn btn-primary"
             >
-              Choose a time <span aria-hidden="true">→</span>
+              Choose a time <span aria-hidden="true">→︎</span>
             </button>
           </div>
         </div>
@@ -549,7 +549,7 @@ export function BookingSteps({
               onClick={() => setStep(4)}
               className="btn btn-primary"
             >
-              Your details <span aria-hidden="true">→</span>
+              Your details <span aria-hidden="true">→︎</span>
             </button>
           </div>
         </div>
@@ -678,7 +678,7 @@ export function BookingSteps({
               className="btn btn-primary"
             >
               {isSubmitting ? "Booking…" : "Confirm booking"}
-              <span aria-hidden="true">{isSubmitting ? "" : "↗"}</span>
+              <span aria-hidden="true">{isSubmitting ? "" : "↗︎"}</span>
             </button>
           </div>
         </form>

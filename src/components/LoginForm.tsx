@@ -63,7 +63,7 @@ export default function LoginForm() {
             </div>
 
             <button type="button" onClick={handleLogin} className="btn btn-primary w-full">
-                Log in <span aria-hidden="true">↗</span>
+                Log in <span aria-hidden="true">↗︎</span>
             </button>
         </div>
     );

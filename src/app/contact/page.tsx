@@ -34,7 +34,7 @@ export default function ContactPage() {
                 times in our online booking.
               </p>
               <Link href="/book" className="btn btn-brass mt-7">
-                Find an appointment <span aria-hidden="true">↗</span>
+                Find an appointment <span aria-hidden="true">↗︎</span>
               </Link>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
@@ -44,7 +44,7 @@ export default function ContactPage() {
                   See the full menu, prices and appointment lengths.
                 </p>
                 <Link href="/services" className="text-link mt-3">
-                  View services <span aria-hidden="true">↗</span>
+                  View services <span aria-hidden="true">↗︎</span>
                 </Link>
               </div>
               <div className="rounded-xl border border-ink/15 p-6">
@@ -53,7 +53,7 @@ export default function ContactPage() {
                   Find out more about the people behind the chair.
                 </p>
                 <Link href="/barbers" className="text-link mt-3">
-                  Our barbers <span aria-hidden="true">↗</span>
+                  Our barbers <span aria-hidden="true">↗︎</span>
                 </Link>
               </div>
             </div>

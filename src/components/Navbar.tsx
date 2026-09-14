@@ -90,7 +90,7 @@ export function Navbar() {
             className="btn btn-brass ml-2"
             aria-current={isActive("/book") ? "page" : undefined}
           >
-            Book now <span aria-hidden="true">↗</span>
+            Book now <span aria-hidden="true">↗︎</span>
           </Link>
         </div>
         <button
@@ -167,7 +167,7 @@ export function Navbar() {
             onClick={() => setIsOpen(false)}
             className="btn btn-brass"
           >
-            Book an appointment <span aria-hidden="true">↗</span>
+            Book an appointment <span aria-hidden="true">↗︎</span>
           </Link>
           <p className="mt-auto pt-10 text-sm text-neutral-400">
             Modern cuts. Traditional standards.

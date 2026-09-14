@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ServiceFilter } from "@/components/ServiceFilter";
-import { createClient } from "@/utils/supabase/server";
+import { getServices } from "@/data/services";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
@@ -20,13 +20,10 @@ export const metadata: Metadata = {
     },
 };
 
+export const revalidate = 600;
+
 export default async function ServicesPage() {
-  const supabase = await createClient();
-  const { data, error } = await supabase.from("services").select("*");
-  if (error) {
-    throw new Error("Failed to load services");
-  }
-  const services = data ?? [];
+    const services = await getServices();
 
   return (
     <>

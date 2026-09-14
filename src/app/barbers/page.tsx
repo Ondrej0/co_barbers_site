@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BarberCard } from "@/components/BarberCard";
-import { createClient } from "@/utils/supabase/server";
+import { getBarbers } from "@/data/barbers";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 
@@ -13,13 +13,10 @@ export const metadata: Metadata = {
     },
 };
 
+export const revalidate = 600;
+
 export default async function Barbers() {
-  const supabase = await createClient();
-  const { data: barbers, error } = await supabase.from("barbers").select("*");
-  if (error) {
-    console.error("Supabase error:", error);
-    throw new Error(error.message);
-  }
+    const barbers = await getBarbers();
   return (
     <>
       <PageHeader

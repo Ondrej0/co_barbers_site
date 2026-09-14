@@ -1,36 +1,28 @@
 import type { Metadata } from "next";
-import { cache } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
 import { Reveal } from "@/components/Reveal";
+import { getBarbers, getBarberBySlug } from "@/data/barbers";
 
 interface BarberProfilePageProps {
   params: Promise<{ slug: string }>;
 }
 
-const getBarber = cache(async (slug: string) => {
-  const supabase = await createClient();
+export const revalidate = 600;
 
-  const { data: barber, error } = await supabase
-      .from("barbers")
-      .select("*")
-      .eq("slug", slug)
-      .single();
+export async function generateStaticParams() {
+  const barbers = await getBarbers();
 
-  if (error || !barber) {
-    return null;
-  }
-
-  return barber;
-});
-
+  return barbers.map((barber) => ({
+    slug: barber.slug,
+  }));
+}
 export async function generateMetadata({
                                          params,
                                        }: BarberProfilePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const barber = await getBarber(slug);
+  const barber = await getBarberBySlug(slug);
 
   if (!barber) {
     return {
@@ -51,9 +43,11 @@ export default async function BarberProfilePage({
                                                   params,
                                                 }: BarberProfilePageProps) {
   const { slug } = await params;
-  const barber = await getBarber(slug);
+  const barber = await getBarberBySlug(slug);
 
-  if (!barber) notFound();
+  if (!barber) {
+    notFound();
+  }
 
   return (
       <section className="site-container py-8 md:py-12 lg:pb-24">
